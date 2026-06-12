@@ -1,0 +1,146 @@
+﻿@model EmployeeMVC.Models.AnalyticsViewModel
+
+@{
+    ViewBag.Title = "Analytics";
+}
+
+<style>
+
+    .analytics-header {
+        margin-bottom: 35px;
+    }
+
+        .analytics-header h1 {
+            font-size: 42px;
+            color: #0F172A;
+            margin-bottom: 10px;
+        }
+
+        .analytics-header p {
+            color: #64748B;
+            font-size: 18px;
+        }
+
+    .analytics-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+        gap: 25px;
+    }
+
+    .analytics-card {
+        background: white;
+        padding: 30px;
+        border-radius: 24px;
+        box-shadow: 0 10px 30px rgba(0,0,0,.05);
+        transition: .3s;
+    }
+
+        .analytics-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 40px rgba(0,0,0,.08);
+        }
+
+    .metric {
+        font-size: 42px;
+        font-weight: 700;
+        color: #06B6D4;
+    }
+
+    .label {
+        color: #64748B;
+        margin-top: 10px;
+        font-size: 16px;
+    }
+</style>
+
+<div class="analytics-header">
+
+    <h1>Analytics Dashboard</h1>
+
+    <p>
+        Workforce insights and employee statistics.
+    </p>
+
+</div>
+
+<div class="analytics-grid">
+
+    <div class="analytics-card">
+
+        <div class="metric">
+            @Model.TotalEmployees
+        </div>
+
+        <div class="label">
+            Total Employees
+        </div>
+
+    </div>
+
+    <div class="analytics-card">
+
+        <div class="metric">
+            @Model.TotalCities
+        </div>
+
+        <div class="label">
+            Cities Covered
+        </div>
+
+    </div>
+
+    <div class="analytics-card">
+
+        <div class="metric"
+             style="color:#10B981;">
+
+            ₹@Model.AverageSalary.ToString("N0")
+
+        </div>
+
+        <div class="label">
+            Average Salary
+        </div>
+
+    </div>
+
+    <div class="analytics-card">
+
+        <div class="metric"
+             style="color:#10B981;">
+
+            ₹@Model.TotalPayroll.ToString("N0")
+
+        </div>
+
+        <div class="label">
+            Total Payroll
+        </div>
+
+    </div>
+
+    <div class="analytics-card">
+
+        <div class="metric">
+            @Model.NewestEmployee
+        </div>
+
+        <div class="label">
+            Youngest Employee
+        </div>
+
+    </div>
+
+    <div class="analytics-card">
+
+        <div class="metric">
+            @Model.OldestEmployee
+        </div>
+
+        <div class="label">
+            Oldest Employee
+        </div>
+
+    </div>
+
+</div>

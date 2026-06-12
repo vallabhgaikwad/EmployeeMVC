@@ -1,0 +1,181 @@
+﻿@model EmployeeMVC.Models.LoginModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+
+    <meta name="viewport" content="width=device-width" />
+
+    <title>Login</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI';
+        }
+
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient( 135deg, #0F172A, #1E293B);
+        }
+
+        .login-card {
+            width: 420px;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,.25);
+        }
+
+        .logo {
+            width: 80px;
+            height: 80px;
+            border-radius: 20px;
+            background: linear-gradient( 135deg, #06B6D4, #14B8A6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 30px;
+            font-weight: 700;
+            margin: 0 auto 25px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #0F172A;
+            margin-bottom: 8px;
+        }
+
+        .tagline {
+            text-align: center;
+            color: #64748B;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #94A3B8;
+            margin-bottom: 30px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #64748B;
+            margin-bottom: 30px;
+        }
+
+        input {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid #CBD5E1;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            font-size: 15px;
+        }
+
+            input:focus {
+                outline: none;
+                border-color: #14B8A6;
+            }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 10px;
+            background: #14B8A6;
+            color: white;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: .3s;
+        }
+
+            button:hover {
+                background: #0D9488;
+            }
+
+        .error {
+            color: red;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            color: #94A3B8;
+            font-size: 13px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="login-card">
+
+        <<div class="logo">
+    EH
+</div>
+
+<h1>EmployeeHub</h1>
+
+<p class="tagline">
+    Workforce Intelligence
+</p>
+
+<p class="subtitle">
+    Welcome back. Sign in to continue.
+</p>
+
+        @if (ViewBag.Error != null)
+        {
+            <div class="error">
+                @ViewBag.Error
+            </div>
+        }
+
+        @using (Html.BeginForm())
+        {
+            @Html.TextBoxFor(
+                m => m.Username,
+                new
+                {
+                    placeholder = "Username"
+                })
+
+            @Html.PasswordFor(
+                m => m.Password,
+                new
+                {
+                    placeholder = "Password"
+                })
+
+            <button type="submit">
+                Login
+            </button>
+        }
+        <div class="footer">
+            Secure Employee Portal
+        </div>
+
+    </div>
+
+</body>
+
+</html>

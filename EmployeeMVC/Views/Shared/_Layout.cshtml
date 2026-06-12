@@ -1,0 +1,200 @@
+﻿@{
+    string currentAction =
+        ViewContext.RouteData.Values["action"].ToString();
+}
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <meta charset="utf-8" />
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1" />
+
+    <title>@ViewBag.Title</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI';
+        }
+
+        body {
+            background: #F8FAFC;
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .sidebar {
+            width: 260px;
+            background: #0F172A;
+            color: white;
+            padding: 30px 20px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .brand {
+            margin-bottom: 50px;
+        }
+
+        .brand-title {
+            font-size: 30px;
+            font-weight: 700;
+            color: #06B6D4;
+        }
+
+        .brand-subtitle {
+            margin-top: 5px;
+            color: #94A3B8;
+            font-size: 13px;
+        }
+
+        .menu {
+            margin-top: 20px;
+        }
+
+            .menu a {
+                display: block;
+                color: #CBD5E1;
+                text-decoration: none;
+                padding: 14px 18px;
+                border-radius: 12px;
+                margin-bottom: 12px;
+                transition: all .3s ease;
+            }
+
+                .menu a:hover {
+                    background: #172554;
+                    color: white;
+                    transform: translateX(5px);
+                }
+
+                .menu a.active {
+                    background: #06B6D4;
+                    color: white;
+                    font-weight: 600;
+                }
+
+        .sidebar-footer {
+            margin-top: auto;
+            padding-top: 30px;
+        }
+
+        .logout {
+            display: block;
+            text-align: center;
+            background: #14B8A6;
+            color: white;
+            text-decoration: none;
+            padding: 12px;
+            border-radius: 12px;
+            transition: .3s;
+        }
+
+            .logout:hover {
+                opacity: .9;
+                transform: translateY(-2px);
+            }
+
+        .content {
+            flex: 1;
+            padding: 40px 50px;
+        }
+
+        .topbar {
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: 30px;
+        }
+
+        .username {
+            background: white;
+            padding: 12px 18px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,.05);
+            color: #64748B;
+            font-weight: 600;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="sidebar">
+
+        <div class="brand">
+
+            <div class="brand-title">
+                EmployeeHub
+            </div>
+
+            <div class="brand-subtitle">
+                Workforce Intelligence
+            </div>
+
+        </div>
+
+        <div class="menu">
+
+            <a href="/Employee/Dashboard"
+               class="@(currentAction == "Dashboard" ? "active" : "")">
+                Dashboard
+            </a>
+
+            <a href="/Employee/Index"
+               class="@(currentAction == "Index" ? "active" : "")">
+                Employees
+            </a>
+
+            <a href="/Employee/Analytics"
+               class="@(currentAction == "Analytics" ? "active" : "")">
+
+                Analytics
+
+            </a>
+
+        
+
+        </div>
+
+        <div class="sidebar-footer">
+
+            <a class="logout"
+               href="/Account/Logout">
+
+                Logout
+
+            </a>
+
+        </div>
+
+    </div>
+
+    <div class="content">
+
+        <div class="topbar">
+
+            <div class="username">
+
+                Welcome,
+                @Session["Username"]
+
+            </div>
+
+        </div>
+
+        @RenderBody()
+
+    </div>
+
+</body>
+
+</html>

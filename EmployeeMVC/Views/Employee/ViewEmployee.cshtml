@@ -1,0 +1,157 @@
+﻿@model EmployeeMVC.Models.Employee
+
+@{
+    ViewBag.Title = "Employee Profile";
+}
+
+<style>
+
+    .profile-card {
+        background: white;
+        max-width: 850px;
+        padding: 40px;
+        border-radius: 24px;
+        box-shadow: 0 10px 30px rgba(0,0,0,.05);
+    }
+
+    .profile-header {
+        display: flex;
+        align-items: center;
+        gap: 25px;
+        margin-bottom: 35px;
+    }
+
+    .avatar {
+        width: 90px;
+        height: 90px;
+        border-radius: 50%;
+        background: #06B6D4;
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 34px;
+        font-weight: 700;
+    }
+
+    .profile-title {
+        font-size: 34px;
+        color: #0F172A;
+        font-weight: 700;
+    }
+
+    .profile-grid {
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+        gap: 25px;
+    }
+
+    .profile-item {
+        background: #F8FAFC;
+        padding: 20px;
+        border-radius: 16px;
+    }
+
+    .label {
+        color: #64748B;
+        font-size: 14px;
+        margin-bottom: 6px;
+    }
+
+    .value {
+        font-size: 22px;
+        color: #0F172A;
+        font-weight: 600;
+    }
+
+    .action-buttons {
+        margin-top: 35px;
+        display: flex;
+        gap: 15px;
+    }
+
+    .edit-btn {
+        background: #14B8A6;
+        color: white;
+        padding: 12px 20px;
+        border-radius: 12px;
+        text-decoration: none;
+    }
+
+    .back-btn {
+        background: #CBD5E1;
+        color: #0F172A;
+        padding: 12px 20px;
+        border-radius: 12px;
+        text-decoration: none;
+    }
+</style>
+
+<div class="profile-card">
+
+    <div class="profile-header">
+
+        <div class="avatar">
+            @(Model.FirstName.Substring(0,1))
+        </div>
+
+        <div class="profile-title">
+            Employee Profile
+        </div>
+
+    </div>
+
+    <div class="profile-grid">
+
+        <div class="profile-item">
+            <div class="label">Employee Code</div>
+            <div class="value">@Model.EmployeeCode</div>
+        </div>
+
+        <div class="profile-item">
+            <div class="label">Full Name</div>
+            <div class="value">@Model.FirstName @Model.LastName</div>
+        </div>
+
+        <div class="profile-item">
+            <div class="label">Gender</div>
+            <div class="value">@Model.Gender</div>
+        </div>
+
+        <div class="profile-item">
+            <div class="label">Designation</div>
+            <div class="value">@Model.Designation</div>
+        </div>
+
+        <div class="profile-item">
+            <div class="label">Salary</div>
+            <div class="value">₹@Model.Salary.ToString("N0")</div>
+        </div>
+
+        <div class="profile-item">
+            <div class="label">City</div>
+            <div class="value">@Model.City</div>
+        </div>
+
+        <div class="profile-item">
+            <div class="label">Birth Date</div>
+            <div class="value">@Model.BirthDate.ToString("dd-MM-yyyy")</div>
+        </div>
+
+    </div>
+
+    <div class="action-buttons">
+
+        <a href="/Employee/Edit/@Model.EmployeeCode"
+           class="edit-btn">
+            Edit Employee
+        </a>
+
+        <a href="/Employee/Index"
+           class="back-btn">
+            Back
+        </a>
+
+    </div>
+
+</div>
